@@ -8,7 +8,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final PageController _pageController = PageController(
     initialPage: 500, // Set an initial page to make continuous scrolling
-    viewportFraction: 0.33, // Set the fraction to display three logos at a time
+    viewportFraction: .33, // Set the fraction to display three logos at a time
   );
   double currentPageValue = 500.0; // Initialize currentPageValue
 
@@ -30,7 +30,7 @@ class _HomeViewState extends State<HomeView> {
       } else {
         _pageController.nextPage(
           duration: Duration(seconds: 2),
-          curve: Curves.easeInOut,
+          curve: Curves.linear, // Use linear curve for continuous scrolling
         );
       }
       _startAutoScroll();
@@ -75,7 +75,7 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    height: 300.0, // Set the desired maximum height
+                    height: 800.0, // Set the desired maximum height
                     child: Stack(
                       children: <Widget>[
                         Image.asset(
@@ -102,23 +102,13 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           Container(
-            height: 100.0, // Adjust the height of the rotating logos
+            height: 200.0, // Adjust the height of the rotating logos
             child: PageView.builder(
               controller: _pageController,
-              itemCount: 1000, // Set a large number for continuous scrolling
+              itemCount: 10000, // Set a large number for continuous scrolling
               itemBuilder: (context, index) {
-                final rotationValue =
-                    (1 - (index - currentPageValue).abs()).clamp(0.0, 1.0);
-                final scaleValue = Curves.easeInOut.transform(rotationValue);
-
-                return Transform(
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, 0.001) // Perspective
-                    ..rotateY(rotationValue * 0.5)
-                    ..scale(scaleValue),
-                  alignment: Alignment.center,
-                  child: LogoWidget('assets/${(index % 5) + 1}.png'),
-                );
+                final logoIndex = index % 5; // Replace 5 with the total number of logos
+                return LogoWidget('assets/${(index % 5) + 1}.png');
               },
             ),
           ),
