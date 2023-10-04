@@ -119,13 +119,13 @@ class _HomeViewState extends State<HomeView> {
                 if (logoIndex == 0) {
                   url = 'https://alphaprotocol.network';
                 } else if (logoIndex == 1) {
-                  url = 'https://fineartsociety.xyz';
+                  url = 'https://app.tryspace.com/M6aiq2y/society-fine-art';
                 } else if (logoIndex == 2) {
                   url = 'https://crypto-hash-nine.vercel.app/';
                 } else if (logoIndex == 3) {
                   url = 'https://powerclubglobal.com/propertymanagement';
                 } else if (logoIndex == 4) {
-                  url = 'https://poncacityplus.com';
+                  url = 'https://poncacityplus.org';
                 }
 
                 return InkWell(
