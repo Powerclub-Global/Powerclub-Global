@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart'; // Import the url_launcher package
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -25,12 +25,12 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void _startAutoScroll() {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 4), () {
       if (currentPageValue >= 999.0) {
         _pageController.jumpToPage(500);
       } else {
         _pageController.nextPage(
-          duration: Duration(seconds: 2),
+          duration: Duration(seconds: 4),
           curve: Curves.linear,
         );
       }
@@ -44,13 +44,12 @@ class _HomeViewState extends State<HomeView> {
     super.dispose();
   }
 
-  // Function to open a website URL in an in-app WebView
-  void _openWebsiteInWebView(String url) async {
+  Future<void> _openWebsiteInWebView(String url) async {
     if (await canLaunch(url)) {
       await launch(
         url,
-        forceWebView: true, // Open the URL in an in-app WebView
-        enableJavaScript: true, // Enable JavaScript in the WebView
+        forceWebView: true,
+        enableJavaScript: true,
       );
     } else {
       throw 'Could not launch $url';
@@ -60,9 +59,16 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFFFFF), // Set background color to #FFFFFF
+      backgroundColor: Color(0xFFFFFFFF),
       appBar: AppBar(
-        backgroundColor: Color(0xFFFFFFFF), // Set background color of the app bar to #FFFFFF
+        backgroundColor: Color(0xFFFFFFFF),
+        bottom: PreferredSize(
+          child: Container(
+            color: Color(0xFFB4914C),
+            height: 1.0,
+          ),
+          preferredSize: Size.fromHeight(1.0),
+        ),
         title: Row(
           children: <Widget>[
             Image.asset(
@@ -80,8 +86,7 @@ class _HomeViewState extends State<HomeView> {
             ),
           ],
         ),
-        elevation: 5,
-        shadowColor: Color(0xFFB4914C),
+        elevation: 0,
       ),
       body: Column(
         children: <Widget>[
@@ -112,27 +117,20 @@ class _HomeViewState extends State<HomeView> {
               itemCount: 10000,
               itemBuilder: (context, index) {
                 final logoIndex = index % 5;
-                final logoImagePath = 'assets/${(index % 5) + 1}.png';
+                final logoImagePath = 'assets/${(logoIndex + 1)}.png';
 
-                // Define URLs for each logo
-                String? url;
-                if (logoIndex == 0) {
-                  url = 'https://alphaprotocol.network';
-                } else if (logoIndex == 1) {
-                  url = 'https://app.tryspace.com/M6aiq2y/society-fine-art';
-                } else if (logoIndex == 2) {
-                  url = 'https://crypto-hash-nine.vercel.app/';
-                } else if (logoIndex == 3) {
-                  url = 'https://powerclubglobal.com/propertymanagement';
-                } else if (logoIndex == 4) {
-                  url = 'https://poncacityplus.org';
-                }
+                final urls = [
+                  'https://alphaprotocol.network',
+                  'https://fineartsociety.xyz',
+                  'https://crypto-hash-nine.vercel.app/',
+                  'https://powerclubglobal.com/propertymanagement',
+                  'https://poncacityplus.com',
+                ];
 
                 return InkWell(
-                  onTap: () {
-                    if (url != null) {
-                      // Open the corresponding website in an in-app WebView
-                      _openWebsiteInWebView(url);
+                  onTap: () async {
+                    if (urls.length > logoIndex) {
+                      await _openWebsiteInWebView(urls[logoIndex]);
                     }
                   },
                   child: LogoWidget(logoImagePath),
