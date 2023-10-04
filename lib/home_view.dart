@@ -58,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: Colors.white, // Set background color to #FFFFFF
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white, // Set background color of the app bar to #FFFFFF
         title: Row(
           children: <Widget>[
             Image.asset(
