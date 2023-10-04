@@ -56,9 +56,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Set background color to #FFFFFF
+      backgroundColor: Color(0xFFFFFFFF), // Set background color to #FFFFFF
       appBar: AppBar(
-        backgroundColor: Colors.white, // Set background color of the app bar to #FFFFFF
+        backgroundColor: Color(0xFFFFFFFF), // Set background color of the app bar to #FFFFFF
         title: Row(
           children: <Widget>[
             Image.asset(
@@ -130,7 +130,7 @@ class _HomeViewState extends State<HomeView> {
                 child: Text(
                   "Copyright Powerclub Global LLC",
                   style: TextStyle(
-                    fontSize: 14.0,
+                    fontSize: 10.0,
                     color: Colors.black,
                   ),
                 ),
