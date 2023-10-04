@@ -58,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: Color(0xFFFFFFFF), // Set background color to #FFFFFF
       appBar: AppBar(
-        backgroundColor: Color(0xFFFFFFFF), // Set background color of the app bar to #FFFFFF
+        backgroundColor:  Color(0xFFFFFFFF), // Set background color of the app bar to #FFFFFF
         title: Row(
           children: <Widget>[
             Image.asset(
@@ -102,7 +102,7 @@ class _HomeViewState extends State<HomeView> {
           ),
           Container(
             height: 200.0,
-            color: Colors.white,
+            color: Color(0xFFFFFFFF),
             child: PageView.builder(
               controller: _pageController,
               itemCount: 10000,
@@ -123,7 +123,7 @@ class _HomeViewState extends State<HomeView> {
           ),
           Material(
             elevation: 5,
-            color: Colors.white,
+            color: Color(0xFFFFFFFF),
             child: Container(
               padding: EdgeInsets.all(16.0),
               child: Center(
