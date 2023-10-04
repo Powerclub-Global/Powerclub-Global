@@ -44,10 +44,14 @@ class _HomeViewState extends State<HomeView> {
     super.dispose();
   }
 
-  // Function to open a website URL
-  void _openWebsite(String url) async {
+  // Function to open a website URL in an in-app WebView
+  void _openWebsiteInWebView(String url) async {
     if (await canLaunch(url)) {
-      await launch(url);
+      await launch(
+        url,
+        forceWebView: true, // Open the URL in an in-app WebView
+        enableJavaScript: true, // Enable JavaScript in the WebView
+      );
     } else {
       throw 'Could not launch $url';
     }
@@ -58,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: Color(0xFFFFFFFF), // Set background color to #FFFFFF
       appBar: AppBar(
-        backgroundColor:  Color(0xFFFFFFFF), // Set background color of the app bar to #FFFFFF
+        backgroundColor: Color(0xFFFFFFFF), // Set background color of the app bar to #FFFFFF
         title: Row(
           children: <Widget>[
             Image.asset(
@@ -110,11 +114,26 @@ class _HomeViewState extends State<HomeView> {
                 final logoIndex = index % 5;
                 final logoImagePath = 'assets/${(index % 5) + 1}.png';
 
-                // Wrap LogoWidget in a GestureDetector to make it clickable
-                return GestureDetector(
+                // Define URLs for each logo
+                String? url;
+                if (logoIndex == 0) {
+                  url = 'https://alphaprotocol.network';
+                } else if (logoIndex == 1) {
+                  url = 'https://fineartsociety.xyz';
+                } else if (logoIndex == 2) {
+                  url = 'https://crypto-hash-nine.vercel.app/';
+                } else if (logoIndex == 3) {
+                  url = 'https://powerclubglobal.com/propertymanagement';
+                } else if (logoIndex == 4) {
+                  url = 'https://poncacityplus.com';
+                }
+
+                return InkWell(
                   onTap: () {
-                    // Open the website when the logo is tapped
-                    _openWebsite('https://powerclubglobal.com'); // Replace with the actual URL
+                    if (url != null) {
+                      // Open the corresponding website in an in-app WebView
+                      _openWebsiteInWebView(url);
+                    }
                   },
                   child: LogoWidget(logoImagePath),
                 );
