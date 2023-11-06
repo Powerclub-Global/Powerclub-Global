@@ -30,6 +30,7 @@ environment:
 dependencies:
   responsive_builder: ^0.4.0
   url_launcher: ^6.0.6 # Use the latest version available
+  provider: 6.0.5
 
   flutter:
     sdk: flutter
@@ -65,12 +66,25 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/pcg.png
+     - assets/pcg_b.png
      - assets/1.png
      - assets/2.png
      - assets/3.png
      - assets/4.png
      - assets/5.png
-     - assets/hero_image.jpg
+     - assets/hero_image.png
+     - assets/1d.png
+     - assets/2d.png
+     - assets/3d.png
+     - assets/4d.png
+     - assets/5d.png
+     - assets/hero_image_d.png
+     - assets/1b.png
+     - assets/2b.png
+     - assets/3b.png
+     - assets/4b.png
+     - assets/5b.png
+     - assets/hero_image_b.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

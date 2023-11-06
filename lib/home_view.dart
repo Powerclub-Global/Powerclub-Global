@@ -1,6 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.light, // Set initial theme to light mode
+        primaryColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white, // Set AppBar background color to white
+          elevation: 0, // Remove the default shadow
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark, // Define dark theme
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.black, // Set AppBar background color to black
+          elevation: 0, // Remove the default shadow
+        ),
+      ),
+      home: HomeView(),
+    );
+  }
+}
+
 class HomeView extends StatefulWidget {
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -12,6 +43,7 @@ class _HomeViewState extends State<HomeView> {
     viewportFraction: .33,
   );
   double currentPageValue = 500.0;
+  bool isDarkMode = false; // Track dark mode state
 
   @override
   void initState() {
@@ -56,37 +88,60 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 
+  // Toggle dark mode
+  void _toggleDarkMode() {
+    setState(() {
+      isDarkMode = !isDarkMode;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFFFFF),
-      appBar: AppBar(
-        backgroundColor: Color(0xFFFFFFFF),
-        bottom: PreferredSize(
-          child: Container(
-            color: Color(0xFFB4914C),
-            height: 1.0,
-          ),
-          preferredSize: Size.fromHeight(1.0),
-        ),
-        title: Row(
-          children: <Widget>[
-            Image.asset(
-              'assets/pcg.png',
-              height: 40.0,
-            ),
-            SizedBox(width: 8.0),
-            Text(
-              'Powerclub Global',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: isDarkMode ? Colors.black : Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xFFB4914C), // Gold shadow color
+                blurRadius: 2.5, // 50% smaller blur radius
+                offset: Offset(0, 2), // 50% smaller offset
               ),
+            ],
+          ),
+          child: AppBar(
+            backgroundColor: Colors.transparent, // Make AppBar background transparent
+            elevation: 0, // Remove the default shadow
+            actions: [
+              IconButton(
+                icon: Icon(
+                  isDarkMode ? Icons.wb_sunny : Icons.brightness_2,
+                  color: isDarkMode ? Colors.white : Colors.black,
+                ),
+                onPressed: _toggleDarkMode,
+              ),
+            ],
+            title: Row(
+              children: <Widget>[
+                Image.asset(
+                  'assets/pcg${isDarkMode ? "_b" : ""}.png',
+                  height: 40.0,
+                ),
+                SizedBox(width: 8.0),
+                Text(
+                  'Powerclub Global',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: isDarkMode ? Colors.white : Colors.black,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-        elevation: 0,
       ),
       body: Column(
         children: <Widget>[
@@ -99,7 +154,7 @@ class _HomeViewState extends State<HomeView> {
                     child: AspectRatio(
                       aspectRatio: 16 / 9,
                       child: Image.asset(
-                        'assets/hero_image.jpg',
+                        'assets/hero_image${isDarkMode ? "_b" : ""}.png', // Use "pcg_b" in dark mode
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -111,20 +166,21 @@ class _HomeViewState extends State<HomeView> {
           ),
           Container(
             height: 200.0,
-            color: Color(0xFFFFFFFF),
+            color: isDarkMode ? Colors.black : Colors.white,
             child: PageView.builder(
               controller: _pageController,
               itemCount: 10000,
               itemBuilder: (context, index) {
                 final logoIndex = index % 5;
-                final logoImagePath = 'assets/${(logoIndex + 1)}.png';
+                final logoImagePath =
+                    'assets/${(logoIndex + 1)}${isDarkMode ? "b" : ""}.png';
 
                 final urls = [
                   'https://alphaprotocol.network',
-                  'https://fineartsociety.xyz',
+                  'https://app.tryspace.com/M6aiq2y/society-fine-art',
                   'https://crypto-hash-nine.vercel.app/',
-                  'https://powerclubglobal.com/propertymanagement',
-                  'https://poncacityplus.com',
+                  'https://emergenceiii.vercel.app',
+                  'https://emergenceiii.vercel.app',
                 ];
 
                 return InkWell(
@@ -140,7 +196,7 @@ class _HomeViewState extends State<HomeView> {
           ),
           Material(
             elevation: 5,
-            color: Color(0xFFFFFFFF),
+            color: isDarkMode ? Colors.black : Colors.white,
             child: Container(
               padding: EdgeInsets.all(16.0),
               child: Center(
@@ -148,7 +204,7 @@ class _HomeViewState extends State<HomeView> {
                   "Copyright Powerclub Global LLC",
                   style: TextStyle(
                     fontSize: 10.0,
-                    color: Colors.black,
+                    color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
               ),
@@ -176,3 +232,4 @@ class LogoWidget extends StatelessWidget {
     );
   }
 }
+
