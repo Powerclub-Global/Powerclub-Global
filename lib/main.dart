@@ -4,6 +4,7 @@ import 'package:pcg/home_view.dart'; // Replace with your actual project name an
 void main() {
   runApp(MaterialApp(
     title: 'Powerclub Global',
+    debugShowCheckedModeBanner: false,
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
