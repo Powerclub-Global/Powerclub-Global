@@ -98,6 +98,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: Container(
@@ -112,7 +113,8 @@ class _HomeViewState extends State<HomeView> {
             ],
           ),
           child: AppBar(
-            backgroundColor: Colors.transparent, // Make AppBar background transparent
+            backgroundColor:
+                Colors.transparent, // Make AppBar background transparent
             elevation: 0, // Remove the default shadow
             actions: [
               IconButton(
@@ -124,6 +126,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ],
             title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
                   'assets/pcg${isDarkMode ? "_b" : ""}.png',
@@ -146,22 +149,23 @@ class _HomeViewState extends State<HomeView> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height - kToolbarHeight - 200.0,
+            child: Column(
+              children: <Widget>[
+                FittedBox(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height -
+                        kToolbarHeight -
+                        250.0,
                     child: AspectRatio(
                       aspectRatio: 16 / 9,
                       child: Image.asset(
                         'assets/hero_image${isDarkMode ? "_b" : ""}.png', // Use "pcg_b" in dark mode
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
-                  SizedBox(height: 16.0),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Container(
@@ -232,4 +236,3 @@ class LogoWidget extends StatelessWidget {
     );
   }
 }
-
