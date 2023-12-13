@@ -150,7 +150,6 @@ class _HomeViewState extends State<HomeView> {
                       style: TextStyle(
                         fontSize: 20.0,
                         fontFamily: 'Cinzel',
-                        fontWeight: FontWeight.bold,
                         color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
