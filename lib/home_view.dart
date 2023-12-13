@@ -98,6 +98,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: Container(
@@ -112,30 +113,47 @@ class _HomeViewState extends State<HomeView> {
             ],
           ),
           child: AppBar(
-            backgroundColor: Colors.transparent, // Make AppBar background transparent
+            backgroundColor:
+                Colors.transparent, // Make AppBar background transparent
             elevation: 0, // Remove the default shadow
             actions: [
-              IconButton(
-                icon: Icon(
-                  isDarkMode ? Icons.wb_sunny : Icons.brightness_2,
-                  color: isDarkMode ? Colors.white : Colors.black,
-                ),
-                onPressed: _toggleDarkMode,
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      isDarkMode ? Icons.wb_sunny : Icons.brightness_2,
+                      color: isDarkMode ? Colors.white : Colors.black,
+                    ),
+                    onPressed: _toggleDarkMode,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  )
+                ],
               ),
             ],
-            title: Row(
+            title: Stack(
               children: <Widget>[
-                Image.asset(
-                  'assets/pcg${isDarkMode ? "_b" : ""}.png',
-                  height: 40.0,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Image.asset(
+                    'assets/pcg${isDarkMode ? "_b" : ""}.png',
+                    height: 40.0,
+                  ),
                 ),
-                SizedBox(width: 8.0),
-                Text(
-                  'Powerclub Global',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: isDarkMode ? Colors.white : Colors.black,
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 5, left: 50),
+                    child: Text(
+                      'Powerclub Global',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Cinzel',
+                        fontWeight: FontWeight.bold,
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -146,22 +164,18 @@ class _HomeViewState extends State<HomeView> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height - kToolbarHeight - 200.0,
-                    child: AspectRatio(
-                      aspectRatio: 16 / 9,
-                      child: Image.asset(
-                        'assets/hero_image${isDarkMode ? "_b" : ""}.png', // Use "pcg_b" in dark mode
-                        fit: BoxFit.cover,
-                      ),
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    height: 500,
+                    child: Image.asset(
+                      'assets/hero_image${isDarkMode ? "_b" : ""}.png', // Use "pcg_b" in dark mode
+                      fit: BoxFit.fitHeight,
                     ),
                   ),
-                  SizedBox(height: 16.0),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Container(
@@ -176,7 +190,7 @@ class _HomeViewState extends State<HomeView> {
                     'assets/${(logoIndex + 1)}${isDarkMode ? "b" : ""}.png';
 
                 final urls = [
-                  'https://alphaprotocol.network',
+                  'https://ethdenver2023-kingbodhi.vercel.app/',
                   'https://app.tryspace.com/M6aiq2y/society-fine-art',
                   'https://crypto-hash-nine.vercel.app/',
                   'https://emergenceiii.vercel.app',
@@ -204,6 +218,7 @@ class _HomeViewState extends State<HomeView> {
                   "Copyright Powerclub Global LLC",
                   style: TextStyle(
                     fontSize: 10.0,
+                    fontFamily: 'Cinzel',
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
@@ -232,4 +247,3 @@ class LogoWidget extends StatelessWidget {
     );
   }
 }
-
