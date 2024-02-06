@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pcg/carees.dart';
 import 'package:pcg/home_view.dart'; // Replace with your actual project name and import path
 
 void main() {
@@ -8,6 +9,10 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
-    home: HomeView(), // Load HomeView as the initial route
+    routes: {
+      '/': (context) => HomeView(),
+      '/careers': (context) => CareersPage(),
+    },
+    initialRoute: '/', // Load HomeView as the initial route
   ));
 }
