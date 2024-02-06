@@ -113,10 +113,24 @@ class _HomeViewState extends State<HomeView> {
             ],
           ),
           child: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor:
                 Colors.transparent, // Make AppBar background transparent
             elevation: 0, // Remove the default shadow
             actions: [
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: isDarkMode ? null : Colors.black),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/careers');
+                  },
+                  child: Text(
+                    "Join Us",
+                    style: TextStyle(color: isDarkMode ? null : Colors.white),
+                  )),
+              SizedBox(
+                width: 20,
+              ),
               Row(
                 children: [
                   IconButton(
@@ -144,7 +158,7 @@ class _HomeViewState extends State<HomeView> {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: EdgeInsets.only(top: 5, left: 50),
+                    padding: EdgeInsets.only(top: 5, left: 170),
                     child: Text(
                       'Powerclub Global',
                       style: TextStyle(
