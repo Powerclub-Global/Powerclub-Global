@@ -93,11 +93,11 @@ class CareersPageState extends State<CareersPage> {
     return Scaffold(
         backgroundColor: isDarkMode ? Colors.black : Colors.white,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
+          preferredSize: const Size.fromHeight(kToolbarHeight),
           child: Container(
             decoration: BoxDecoration(
               color: isDarkMode ? Colors.black : Colors.white,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Color(0xFFB4914C), // Gold shadow color
                   blurRadius: 2.5, // 50% smaller blur radius
@@ -111,15 +111,41 @@ class CareersPageState extends State<CareersPage> {
                   Colors.transparent, // Make AppBar background transparent
               elevation: 0, // Remove the default shadow
               actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/team');
+                    },
+                    child: Text("Our Team")),
+                const SizedBox(
+                  width: 20,
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/services');
+                    },
+                    child: Text("Services")),
+                const SizedBox(
+                  width: 20,
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/aboutUs');
+                    },
+                    child: Text("About Us")),
+                const SizedBox(
+                  width: 20,
+                ),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: isDarkMode ? null : Colors.black),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/careers');
+                    },
                     child: Text(
                       "Join Us",
                       style: TextStyle(color: isDarkMode ? null : Colors.white),
                     )),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Row(
@@ -131,7 +157,7 @@ class CareersPageState extends State<CareersPage> {
                       ),
                       onPressed: _toggleDarkMode,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     )
                   ],
@@ -141,14 +167,9 @@ class CareersPageState extends State<CareersPage> {
                 children: <Widget>[
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/');
-                      },
-                      child: Image.asset(
-                        'assets/pcg${isDarkMode ? "_b" : ""}.png',
-                        height: 40.0,
-                      ),
+                    child: Image.asset(
+                      'assets/pcg${isDarkMode ? "_b" : ""}.png',
+                      height: 40.0,
                     ),
                   ),
                   Align(
@@ -160,7 +181,6 @@ class CareersPageState extends State<CareersPage> {
                         style: TextStyle(
                           fontSize: 20.0,
                           fontFamily: 'Cinzel',
-                          fontWeight: FontWeight.bold,
                           color: isDarkMode ? Colors.white : Colors.black,
                         ),
                       ),

@@ -1,37 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.light, // Set initial theme to light mode
-        primaryColor: Colors.white,
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.white, // Set AppBar background color to white
-          elevation: 0, // Remove the default shadow
-        ),
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark, // Define dark theme
-        primaryColor: Colors.black,
-        scaffoldBackgroundColor: Colors.black,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.black, // Set AppBar background color to black
-          elevation: 0, // Remove the default shadow
-        ),
-      ),
-      home: HomeView(),
-    );
-  }
-}
-
 class HomeView extends StatefulWidget {
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -53,22 +22,22 @@ class _HomeViewState extends State<HomeView> {
         currentPageValue = _pageController.page!;
       });
     });
-    _startAutoScroll();
+    // _startAutoScroll();
   }
 
-  void _startAutoScroll() {
-    Future.delayed(Duration(seconds: 4), () {
-      if (currentPageValue >= 999.0) {
-        _pageController.jumpToPage(500);
-      } else {
-        _pageController.nextPage(
-          duration: Duration(seconds: 4),
-          curve: Curves.linear,
-        );
-      }
-      _startAutoScroll();
-    });
-  }
+  // void _startAutoScroll() {
+  //   Future.delayed(Duration(seconds: 4), () {
+  //     if (currentPageValue >= 999.0) {
+  //       _pageController.jumpToPage(500);
+  //     } else {
+  //       _pageController.nextPage(
+  //         duration: Duration(seconds: 4),
+  //         curve: Curves.linear,
+  //       );
+  //     }
+  //     _startAutoScroll();
+  //   });
+  // }
 
   @override
   void dispose() {
@@ -100,11 +69,11 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: const Size.fromHeight(kToolbarHeight),
         child: Container(
           decoration: BoxDecoration(
             color: isDarkMode ? Colors.black : Colors.white,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Color(0xFFB4914C), // Gold shadow color
                 blurRadius: 2.5, // 50% smaller blur radius
@@ -118,6 +87,30 @@ class _HomeViewState extends State<HomeView> {
                 Colors.transparent, // Make AppBar background transparent
             elevation: 0, // Remove the default shadow
             actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/team');
+                  },
+                  child: Text("Our Team")),
+              const SizedBox(
+                width: 20,
+              ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/services');
+                  },
+                  child: Text("Services")),
+              const SizedBox(
+                width: 20,
+              ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/aboutUs');
+                  },
+                  child: Text("About Us")),
+              const SizedBox(
+                width: 20,
+              ),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: isDarkMode ? null : Colors.black),
@@ -128,7 +121,7 @@ class _HomeViewState extends State<HomeView> {
                     "Join Us",
                     style: TextStyle(color: isDarkMode ? null : Colors.white),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Row(
@@ -140,7 +133,7 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     onPressed: _toggleDarkMode,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   )
                 ],
@@ -174,21 +167,14 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    height: 500,
-                    child: Image.asset(
-                      'assets/hero_image${isDarkMode ? "_b" : ""}.png', // Use "pcg_b" in dark mode
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
-                ),
-              ],
+      body: SingleChildScrollView(
+          child: Column(
+        children: [
+          Container(
+            height: 500,
+            child: Image.asset(
+              'assets/hero_image${isDarkMode ? "_b" : ""}.png', // Use "pcg_b" in dark mode
+              fit: BoxFit.fitHeight,
             ),
           ),
           Container(
@@ -239,7 +225,7 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
         ],
-      ),
+      )),
     );
   }
 }
@@ -247,7 +233,7 @@ class _HomeViewState extends State<HomeView> {
 class LogoWidget extends StatelessWidget {
   final String imagePath;
 
-  LogoWidget(this.imagePath);
+  const LogoWidget(this.imagePath);
 
   @override
   Widget build(BuildContext context) {
