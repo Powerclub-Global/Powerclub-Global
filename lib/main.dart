@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pcg/appwrite.dart';
 import 'package:pcg/change_notifiers/blog_notifier.dart';
 import 'package:pcg/pages/blog_page.dart';
+import 'package:pcg/pages/press_release.dart';
 import 'package:pcg/theme/theme.dart';
 import 'package:pcg/theme/theme_manager.dart';
 import 'pages/home.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
             '/aboutUsPage': (context) => AboutUsPage(),
             '/contactUsPage': (context) => const ContactUsPage(),
             '/careersPage': (context) => CareersPage(),
+            '/pressRelease': (context) => PressReleasePage(),
             '/bodhiPage': (context) => const Bodhi(),
             '/blogs': (context) => const BlogPage()
           },

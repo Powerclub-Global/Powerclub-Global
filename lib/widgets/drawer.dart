@@ -11,7 +11,9 @@ class CustomDrawer extends StatelessWidget {
       child: Container(
         // Set the width of the drawer to half of the screen width
         width: MediaQuery.of(context).size.width * 0.5,
-        color: isDarkMode ? Colors.black : Colors.white, // Match the app's background color
+        color: isDarkMode
+            ? Colors.black
+            : Colors.white, // Match the app's background color
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -27,11 +29,13 @@ class CustomDrawer extends StatelessWidget {
             _drawerItem(context, 'Services', '/servicesPage'),
             _drawerItem(context, 'Insights', '/insightsPage'),
             _drawerItem(context, 'About', '/aboutUsPage'),
-            _drawerItem(context, 'Careers', '/careersPage'),
+            _drawerItem(context, 'Press Release', '/pressRelease'),
             _drawerItem(context, 'Contact', '/contactUsPage'),
             const Spacer(), // Use Spacer to push everything up
             Divider(
-              color: isDarkMode ? Colors.white : const Color(0xFFB4914C), // Responsive underline color
+              color: isDarkMode
+                  ? Colors.white
+                  : const Color(0xFFB4914C), // Responsive underline color
               thickness: 2,
             ),
           ],
@@ -42,7 +46,11 @@ class CustomDrawer extends StatelessWidget {
 
   Widget _drawerItem(BuildContext context, String title, String routeName) {
     return ListTile(
-      title: Text(title, style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black)),
+      title: Text(title,
+          style: TextStyle(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : Colors.black)),
       onTap: () => Navigator.pushNamed(context, routeName),
     );
   }
