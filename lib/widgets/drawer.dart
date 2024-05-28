@@ -29,7 +29,7 @@ class CustomDrawer extends StatelessWidget {
             _drawerItem(context, 'Services', '/servicesPage'),
             _drawerItem(context, 'Insights', '/insightsPage'),
             _drawerItem(context, 'About', '/aboutUsPage'),
-            _drawerItem(context, 'Press Release', '/pressRelease'),
+            _drawerItem(context, 'Press Releases', '/pressReleases'),
             _drawerItem(context, 'Contact', '/contactUsPage'),
             const Spacer(), // Use Spacer to push everything up
             Divider(

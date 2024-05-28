@@ -36,7 +36,7 @@ class PressReleasePage extends StatelessWidget {
                       children: [
                         SizedBox(height: 60),
                         Text(
-                          'Press Release',
+                          'Press Releases',
                           style: TextStyle(
                               fontFamily: 'Cinzel',
                               fontWeight: FontWeight.bold,

@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             '/aboutUsPage': (context) => AboutUsPage(),
             '/contactUsPage': (context) => const ContactUsPage(),
             '/careersPage': (context) => CareersPage(),
-            '/pressRelease': (context) => PressReleasePage(),
+            '/pressReleases': (context) => PressReleasePage(),
             '/bodhiPage': (context) => const Bodhi(),
             '/blogs': (context) => const BlogPage()
           },

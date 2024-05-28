@@ -83,8 +83,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                                     : Colors.black))),
                     TextButton(
                         onPressed: () =>
-                            Navigator.pushNamed(context, '/pressRelease'),
-                        child: Text("Press Release",
+                            Navigator.pushNamed(context, '/pressReleases'),
+                        child: Text("Press Releases",
                             style: TextStyle(
                                 color: themeManager.isDarkMode
                                     ? Colors.white
