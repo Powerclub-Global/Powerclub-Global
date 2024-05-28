@@ -85,7 +85,7 @@ class Home extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            const InsightsSection(),
+            InsightsSection(),
             const SizedBox(
               height: 20,
             ),

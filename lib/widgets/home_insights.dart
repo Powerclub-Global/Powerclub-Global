@@ -3,7 +3,8 @@ import 'package:pcg/change_notifiers/blog_notifier.dart';
 import 'package:pcg/widgets/blog_box.dart';
 
 class InsightsSection extends StatelessWidget {
-  const InsightsSection({Key? key}) : super(key: key);
+  bool isIndustryPage;
+  InsightsSection({Key? key, this.isIndustryPage = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +14,17 @@ class InsightsSection extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          Text(
-            "Industry Insights",
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge
-                ?.copyWith(fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 40),
+          !isIndustryPage
+              ? Text(
+                  "Industry Insights",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                )
+              : SizedBox(),
+          !isIndustryPage ? const SizedBox(height: 40) : SizedBox(),
           ListenableBuilder(
               listenable: blogNotifier,
               builder: (context, child) {
@@ -80,21 +83,23 @@ class InsightsSection extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       );
               }),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              // Define what happens when the button is pressed
-              // For example, navigate to a page showing client results
-              Navigator.of(context)
-                  .pushNamed('/insightsPage'); // Adjust the route as needed
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor:
-                  const Color(0xFFB4914C), // Background color of the button
-              foregroundColor: Colors.white, // Text color of the button
-            ),
-            child: const Text('See our Insights'),
-          ),
+          !isIndustryPage ? const SizedBox(height: 16) : SizedBox(),
+          !isIndustryPage
+              ? ElevatedButton(
+                  onPressed: () {
+                    // Define what happens when the button is pressed
+                    // For example, navigate to a page showing client results
+                    Navigator.of(context).pushNamed(
+                        '/insightsPage'); // Adjust the route as needed
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(
+                        0xFFB4914C), // Background color of the button
+                    foregroundColor: Colors.white, // Text color of the button
+                  ),
+                  child: const Text('See our Insights'),
+                )
+              : SizedBox(),
         ],
       ),
     );

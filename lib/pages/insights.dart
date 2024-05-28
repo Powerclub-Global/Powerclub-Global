@@ -28,7 +28,7 @@ class InsightsPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -53,7 +53,7 @@ class InsightsPage extends StatelessWidget {
                         SizedBox(
                           height: 40,
                         ),
-                        InsightsSection(),
+                        InsightsSection(isIndustryPage: true),
                       ],
                     ),
                   ),
