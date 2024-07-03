@@ -20,7 +20,7 @@ class BlogNotifier extends ChangeNotifier {
 
     pressReleases = list.documents
         .where((blogPost) => blogPost.data["isPress"] == true)
-        .toList();
+        .toList().reversed.toList();
 
     areBlogsFetched = true;
     notifyListeners();
