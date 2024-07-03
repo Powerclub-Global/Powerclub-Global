@@ -18,17 +18,21 @@ class PressReleaseSection extends StatelessWidget {
               builder: (context, child) {
                 return blogNotifier.areBlogsFetched
                     ? Wrap(
-                        spacing: 20.0,
-                        runSpacing: 20.0,
+                        spacing: 45,
+                        runSpacing: 45,
                         alignment: WrapAlignment.center,
-                        children: List.generate(blogNotifier.pressReleases.length, (index) {
+                        children: List.generate(
+                            blogNotifier.pressReleases.length, (index) {
                           return BlogBox(
-                            title: blogNotifier.pressReleases[index].data["title"],
-                            description:
-                                blogNotifier.pressReleases[index].data["description"],
-                            image: blogNotifier.pressReleases[index].data["thumbnail"],
+                            title:
+                                blogNotifier.pressReleases[index].data["title"],
+                            description: blogNotifier
+                                .pressReleases[index].data["description"],
+                            image: blogNotifier
+                                .pressReleases[index].data["thumbnail"],
                             tag: blogNotifier.pressReleases[index].data["tag"],
-                            content: blogNotifier.pressReleases[index].data["content"],
+                            content: blogNotifier
+                                .pressReleases[index].data["content"],
                             isDesktop: isDesktop,
                           );
                         }),
