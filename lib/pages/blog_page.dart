@@ -76,6 +76,12 @@ class BlogPage extends StatelessWidget {
                               onTapLink: (text, href, title) {
                                 launchUrl(Uri.parse(href!));
                               },
+                              imageBuilder:
+                                  (Uri uri, String? title, String? alt) {
+                                return Center(
+                                  child: Image.network(uri.toString()),
+                                );
+                              },
                             )),
                         const SizedBox(
                           height: 40,
