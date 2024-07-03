@@ -17,56 +17,22 @@ class PressReleaseSection extends StatelessWidget {
               listenable: blogNotifier,
               builder: (context, child) {
                 return blogNotifier.areBlogsFetched
-                    ? isDesktop
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              BlogBox(
-                                title: blogNotifier.blogs[3].data["title"],
-                                description:
-                                    blogNotifier.blogs[3].data["description"],
-                                image: blogNotifier.blogs[3].data["thumbnail"],
-                                tag: blogNotifier.blogs[3].data["tag"],
-                                content: blogNotifier.blogs[3].data["content"],
-                                isDesktop: isDesktop,
-                              ), // Assuming BlogBox is a widget you've defined
-                              //   SizedBox(
-                              //       width: 0.02083333333 *
-                              //           MediaQuery.sizeOf(context).width),
-                              //   BlogBox(
-                              //     title: blogNotifier.blogs[0].data["title"],
-                              //     description:
-                              //         blogNotifier.blogs[0].data["description"],
-                              //     image: blogNotifier.blogs[0].data["thumbnail"],
-                              //     tag: blogNotifier.blogs[0].data["tag"],
-                              //     content: blogNotifier.blogs[0].data["content"],
-                              //     isDesktop: isDesktop,
-                              //   ),
-                            ],
-                          )
-                        : Column(
-                            children: [
-                              BlogBox(
-                                title: blogNotifier.blogs[3].data["title"],
-                                description:
-                                    blogNotifier.blogs[3].data["description"],
-                                image: blogNotifier.blogs[3].data["thumbnail"],
-                                tag: blogNotifier.blogs[3].data["tag"],
-                                content: blogNotifier.blogs[3].data["content"],
-                                isDesktop: isDesktop,
-                              ), // Assuming BlogBox is a widget you've defined
-                              // SizedBox(height: 30),
-                              // BlogBox(
-                              //   title: blogNotifier.blogs[0].data["title"],
-                              //   description:
-                              //       blogNotifier.blogs[0].data["description"],
-                              //   image: blogNotifier.blogs[0].data["thumbnail"],
-                              //   tag: blogNotifier.blogs[0].data["tag"],
-                              //   content: blogNotifier.blogs[0].data["content"],
-                              //   isDesktop: isDesktop,
-                              // ),
-                            ],
-                          )
+                    ? Wrap(
+                        spacing: 20.0,
+                        runSpacing: 20.0,
+                        alignment: WrapAlignment.center,
+                        children: List.generate(blogNotifier.pressReleases.length, (index) {
+                          return BlogBox(
+                            title: blogNotifier.pressReleases[index].data["title"],
+                            description:
+                                blogNotifier.pressReleases[index].data["description"],
+                            image: blogNotifier.pressReleases[index].data["thumbnail"],
+                            tag: blogNotifier.pressReleases[index].data["tag"],
+                            content: blogNotifier.pressReleases[index].data["content"],
+                            isDesktop: isDesktop,
+                          );
+                        }),
+                      )
                     : const Center(
                         child: CircularProgressIndicator(),
                       );

@@ -8,13 +8,20 @@ BlogNotifier blogNotifier = BlogNotifier();
 class BlogNotifier extends ChangeNotifier {
   bool areBlogsFetched = false;
   List<Document> blogs = [];
+  List<Document> pressReleases = [];
 
   Future<void> fetchBlogs() async {
-    print("fetching blogs");
     DocumentList list = await appwrite.databases
         .listDocuments(databaseId: DatabaseID, collectionId: CollectionID);
-    print("Blogs fetched");
-    blogs = list.documents;
+
+    blogs = list.documents
+        .where((blogPost) => blogPost.data["isPress"] == false)
+        .toList();
+
+    pressReleases = list.documents
+        .where((blogPost) => blogPost.data["isPress"] == true)
+        .toList();
+
     areBlogsFetched = true;
     notifyListeners();
   }
