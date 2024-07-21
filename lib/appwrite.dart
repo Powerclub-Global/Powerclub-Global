@@ -10,7 +10,7 @@ class Appwrite {
   void initialiseAppwrite() {
     client
         .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("6629f80bd9d51cfbab00");
+        .setProject("669cf82100212276b67e");
     databases = Databases(client);
     account = Account(client);
   }
