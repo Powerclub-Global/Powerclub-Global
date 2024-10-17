@@ -1,3 +1,4 @@
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:pcg/change_notifiers/blog_notifier.dart';
 import 'package:pcg/widgets/blog_box.dart';
@@ -23,16 +24,16 @@ class PressReleaseSection extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         children: List.generate(
                             blogNotifier.pressReleases.length, (index) {
+                          Document? post = blogNotifier.pressReleases[
+                              blogNotifier.pressReleases.keys.elementAt(index)];
                           return BlogBox(
-                            title:
-                                blogNotifier.pressReleases[index].data["title"],
-                            description: blogNotifier
-                                .pressReleases[index].data["description"],
-                            image: blogNotifier
-                                .pressReleases[index].data["thumbnail"],
-                            tag: blogNotifier.pressReleases[index].data["tag"],
-                            content: blogNotifier
-                                .pressReleases[index].data["content"],
+                            urlId: blogNotifier.pressReleases.keys
+                                .elementAt(index),
+                            title: post!.data["title"],
+                            description: post.data["description"],
+                            image: post.data["thumbnail"],
+                            tag: post.data["tag"],
+                            content: post.data["content"],
                             isDesktop: isDesktop,
                           );
                         }),

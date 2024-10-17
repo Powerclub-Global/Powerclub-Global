@@ -79,7 +79,8 @@ class LinkButton extends StatelessWidget {
           foregroundColor: isDarkMode
               ? Colors.white
               : Colors.black, // Adjusted text color for light mode
-          backgroundColor: isDownload ? const Color.fromARGB(255, 255, 201, 8) : null,
+          backgroundColor:
+              isDownload ? const Color.fromARGB(255, 255, 201, 8) : null,
           minimumSize: const Size(double.infinity, 50),
           padding: const EdgeInsets.symmetric(vertical: 16.0), // Adjust padding
           shape: RoundedRectangleBorder(
@@ -94,6 +95,6 @@ class LinkButton extends StatelessWidget {
   }
 
   void _launchURL(String url) async {
-    if (!await launch(url)) throw 'Could not launch $url';
+    if (!await launchUrl(Uri.parse(url))) throw 'Could not launch $url';
   }
 }

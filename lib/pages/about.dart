@@ -129,18 +129,18 @@ class AboutUsPage extends StatelessWidget {
               child: Column(
                 children: [
                    Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                    Image.asset('assets/about1.png'),
                     const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          const Text(
+                          Text(
                             'At the heart of our mission lies a singular commitment: to build a brighter tomorrow, today. '
                             'As a forward-thinking global consultancy, we unite with the worlds pioneering changemakers to craft the future. '
                             'Spanning across the globe, our team operates as a unified force, dedicated to propelling our clients towards remarkable achievements. '
@@ -148,7 +148,7 @@ class AboutUsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'Cinzel'),
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 40),
+                          SizedBox(height: 40),
                         ],
                       ),
                     ),
@@ -157,7 +157,7 @@ class AboutUsPage extends StatelessWidget {
                       child: isWideScreen
                           ? Row(
                               children: [
-                                Expanded(
+                                const Expanded(
                                   child: Text(
                                     'Our approach is characterized by a bespoke, integrated expertise, augmented by a dynamic ecosystem of digital pioneers. '
                                     'This combination ensures not only superior outcomes but does so with unmatched speed and sustainability. '
@@ -198,7 +198,7 @@ class AboutUsPage extends StatelessWidget {
                                   child: Image.asset('assets/about3.png'),
                                 ),
                                 const SizedBox(width: 20),
-                                Expanded(
+                                const Expanded(
                                   child: Text(
                                     'Pride in our work is matched by our recognition as an industry leader in ethical, social, and environmental practices. '
                                     'This accolade places us in the elite top 1% of businesses worldwide, a testament to our commitment to making a positive impact on the world. '
@@ -231,7 +231,7 @@ class AboutUsPage extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: isDarkMode ? Colors.white : Color(0xFFB4914C),
+                          color: isDarkMode ? Colors.white : const Color(0xFFB4914C),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(16),
@@ -348,8 +348,8 @@ class AboutUsPage extends StatelessWidget {
                               ? Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Expanded(
-                                      child: const Text(
+                                    const Expanded(
+                                      child: Text(
                                         'Our experts bring deep industry and functional expertise and a range of perspectives that question the status quo and spark change. We work in a uniquely collaborative model across the firm and throughout all levels of the client organization, fueled by the goal of helping our clients thrive and enabling them to make the world a better place.',
                                         style: TextStyle(fontFamily: 'Cinzel'),
                                         textAlign: TextAlign.center,
@@ -504,14 +504,14 @@ class AboutUsPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           isWideScreen
-                              ? Row(
+                              ? const Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
-                                        children: const [
+                                        children: [
                                           Text(
                                             'PCG Amplify',
                                             style: TextStyle(
@@ -586,12 +586,12 @@ class AboutUsPage extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(width: 20),
+                                    SizedBox(width: 20),
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
-                                        children: const [
+                                        children: [
                                           /*
                                           Text(
                                             'PCG Capital',
@@ -732,10 +732,10 @@ class AboutUsPage extends StatelessWidget {
                                     ),
                                   ],
                                 )
-                              : Column(
+                              : const Column(
                                   crossAxisAlignment:
                                       CrossAxisAlignment.stretch,
-                                  children: const [
+                                  children: [
                                     Text(
                                       'PCG Amplify',
                                       style: TextStyle(
@@ -943,9 +943,9 @@ class AboutUsPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                       ),
                       padding: const EdgeInsets.all(16.0),
-                      child: Column(
+                      child: const Column(
                         children: [
-                          const Text(
+                          Text(
                             'Artificial Intelligence',
                             style: TextStyle(
                               fontFamily: 'Cinzel',
@@ -954,14 +954,14 @@ class AboutUsPage extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 20),
-                          const Text(
+                          SizedBox(height: 20),
+                          Text(
                             'Scaling artificial intelligence can create a massive competitive advantage. Learn how our AI-driven initiatives have helped clients extract value.',
                             style: TextStyle(fontFamily: 'Cinzel'),
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 20),
-                          const Text(
+                          SizedBox(height: 20),
+                          Text(
                             'READ OUR KNOWLEDGE >',
                             style: TextStyle(
                               fontFamily: 'Cinzel',

@@ -13,14 +13,18 @@ import '../widgets/home_newsletter.dart';
 class Home extends StatelessWidget {
   final PageController _pageController =
       PageController(initialPage: 500, viewportFraction: .33);
-  double currentPageValue = 500.0;
+  final double currentPageValue = 500.0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Home({super.key});
 
   Future<void> _openWebsiteInWebView(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url, forceWebView: true, enableJavaScript: true);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url),
+          webViewConfiguration: const WebViewConfiguration(
+            enableJavaScript: true,
+          ),
+          mode: LaunchMode.inAppWebView);
     } else {
       throw 'Could not launch $url';
     }
@@ -85,7 +89,7 @@ class Home extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            InsightsSection(),
+            const InsightsSection(),
             const SizedBox(
               height: 20,
             ),

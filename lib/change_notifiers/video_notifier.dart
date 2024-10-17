@@ -18,15 +18,17 @@ class VideoNotifier extends ChangeNotifier {
   initialiseVideoController(BuildContext context) async {
     await videoPlayerController.initialize();
     videoPlayerController.pause();
-    customVideoPlayerController = CustomVideoPlayerController(
-        context: context,
-        videoPlayerController: videoPlayerController,
-        customVideoPlayerSettings: const CustomVideoPlayerSettings(
-            showDurationPlayed: false,
-            showDurationRemaining: false,
-            settingsButtonAvailable: false,
-            playbackSpeedButtonAvailable: false));
-    customVideoPlayerController.videoPlayerController.setVolume(0.7);
-    videoNotifier.videoIsInitialised(true);
+    if (context.mounted) {
+      customVideoPlayerController = CustomVideoPlayerController(
+          context: context,
+          videoPlayerController: videoPlayerController,
+          customVideoPlayerSettings: const CustomVideoPlayerSettings(
+              showDurationPlayed: false,
+              showDurationRemaining: false,
+              settingsButtonAvailable: false,
+              playbackSpeedButtonAvailable: false));
+      customVideoPlayerController.videoPlayerController.setVolume(0.7);
+      videoNotifier.videoIsInitialised(true);
+    }
   }
 }

@@ -1,2 +1,2 @@
-String DatabaseID = "pcg_database";
-String CollectionID = "blogs";
+String databaseId = "pcg_database";
+String collectionId = "blogs";
