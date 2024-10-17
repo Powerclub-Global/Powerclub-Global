@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:pcg/change_notifiers/video_notifier.dart';
@@ -8,7 +10,7 @@ class HomeVideo extends StatefulWidget {
   const HomeVideo({Key? key, required this.videoUrl}) : super(key: key);
 
   @override
-  _HomeVideoState createState() => _HomeVideoState();
+  State<HomeVideo> createState() => _HomeVideoState();
 }
 
 class _HomeVideoState extends State<HomeVideo> {
@@ -20,8 +22,8 @@ class _HomeVideoState extends State<HomeVideo> {
     return ListenableBuilder(
         listenable: videoNotifier,
         builder: (BuildContext context, Widget? child) {
-          print("printing is initialised value");
-          print(videoNotifier.isVideoInitialised);
+          log("printing is initialised value");
+          log(videoNotifier.isVideoInitialised.toString());
           return videoNotifier.isVideoInitialised
               ? AspectRatio(
                   aspectRatio: videoPlayerController.value.aspectRatio,

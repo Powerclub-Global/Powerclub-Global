@@ -20,9 +20,6 @@ class Appwrite {
     final sessionToken = await account.createPhoneToken(
         userId: ID.unique(), phone: '+14255550123');
     final userId = sessionToken.userId;
-    final session = await account.updatePhoneSession(
-    userId: userId,
-    secret: '[SECRET]'
-);
+    await account.updatePhoneSession(userId: userId, secret: '[SECRET]');
   }
 }

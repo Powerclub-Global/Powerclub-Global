@@ -6,8 +6,14 @@ import 'package:pcg/widgets/footer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BlogPage extends StatelessWidget {
-  const BlogPage({super.key});
-
+  const BlogPage(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.content});
+  final String image;
+  final String title;
+  final String content;
   @override
   Widget build(
     BuildContext context,
@@ -15,11 +21,6 @@ class BlogPage extends StatelessWidget {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     bool isWideScreen = MediaQuery.of(context).size.width >= 800;
     ScrollController scrollController = ScrollController();
-    // bool isDesktop = MediaQuery.sizeOf(context).width < ;
-    dynamic args = ModalRoute.of(context)!.settings.arguments!;
-    String image = args!["image"];
-    String title = args!["title"];
-    String content = args!["content"];
     return Scaffold(
       key: scaffoldKey,
       appBar: PreferredSize(

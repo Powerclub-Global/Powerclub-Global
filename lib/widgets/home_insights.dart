@@ -3,8 +3,9 @@ import 'package:pcg/change_notifiers/blog_notifier.dart';
 import 'package:pcg/widgets/blog_box.dart';
 
 class InsightsSection extends StatelessWidget {
-  bool isIndustryPage;
-  InsightsSection({Key? key, this.isIndustryPage = false}) : super(key: key);
+  final bool isIndustryPage;
+  const InsightsSection({Key? key, this.isIndustryPage = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,8 @@ class InsightsSection extends StatelessWidget {
                       ?.copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 )
-              : SizedBox(),
-          !isIndustryPage ? const SizedBox(height: 40) : SizedBox(),
+              : const SizedBox(),
+          !isIndustryPage ? const SizedBox(height: 40) : const SizedBox(),
           ListenableBuilder(
               listenable: blogNotifier,
               builder: (context, child) {
@@ -34,24 +35,54 @@ class InsightsSection extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               BlogBox(
-                                title: blogNotifier.blogs[0].data["title"],
-                                description:
-                                    blogNotifier.blogs[0].data["description"],
-                                image: blogNotifier.blogs[0].data["thumbnail"],
-                                tag: blogNotifier.blogs[0].data["tag"],
-                                content: blogNotifier.blogs[0].data["content"],
+                                urlId: blogNotifier.blogs.keys.elementAt(0),
+                                title: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["title"],
+                                description: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["description"],
+                                image: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["thumbnail"],
+                                tag: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["tag"],
+                                content: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["content"],
                                 isDesktop: isDesktop,
                               ), // Assuming BlogBox is a widget you've defined
                               SizedBox(
                                   width: 0.02083333333 *
                                       MediaQuery.sizeOf(context).width),
                               BlogBox(
-                                title: blogNotifier.blogs[2].data["title"],
-                                description:
-                                    blogNotifier.blogs[2].data["description"],
-                                image: blogNotifier.blogs[2].data["thumbnail"],
-                                tag: blogNotifier.blogs[2].data["tag"],
-                                content: blogNotifier.blogs[2].data["content"],
+                                urlId: blogNotifier.blogs.keys.elementAt(2),
+                                title: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["title"],
+                                description: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["description"],
+                                image: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["thumbnail"],
+                                tag: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["tag"],
+                                content: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["content"],
                                 isDesktop: isDesktop,
                               ),
                             ],
@@ -59,22 +90,52 @@ class InsightsSection extends StatelessWidget {
                         : Column(
                             children: [
                               BlogBox(
-                                title: blogNotifier.blogs[0].data["title"],
-                                description:
-                                    blogNotifier.blogs[0].data["description"],
-                                image: blogNotifier.blogs[0].data["thumbnail"],
-                                tag: blogNotifier.blogs[0].data["tag"],
-                                content: blogNotifier.blogs[0].data["content"],
+                                urlId: blogNotifier.blogs.keys.elementAt(0),
+                                title: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["title"],
+                                description: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["description"],
+                                image: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["thumbnail"],
+                                tag: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["tag"],
+                                content: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(0)]!
+                                    .data["content"],
                                 isDesktop: isDesktop,
                               ), // Assuming BlogBox is a widget you've defined
                               const SizedBox(height: 30),
                               BlogBox(
-                                title: blogNotifier.blogs[2].data["title"],
-                                description:
-                                    blogNotifier.blogs[2].data["description"],
-                                image: blogNotifier.blogs[2].data["thumbnail"],
-                                tag: blogNotifier.blogs[2].data["tag"],
-                                content: blogNotifier.blogs[2].data["content"],
+                                urlId: blogNotifier.blogs.keys.elementAt(2),
+                                title: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["title"],
+                                description: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["description"],
+                                image: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["thumbnail"],
+                                tag: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["tag"],
+                                content: blogNotifier
+                                    .blogs[
+                                        blogNotifier.blogs.keys.elementAt(2)]!
+                                    .data["content"],
                                 isDesktop: isDesktop,
                               ),
                             ],
@@ -83,7 +144,7 @@ class InsightsSection extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       );
               }),
-          !isIndustryPage ? const SizedBox(height: 16) : SizedBox(),
+          !isIndustryPage ? const SizedBox(height: 16) : const SizedBox(),
           !isIndustryPage
               ? ElevatedButton(
                   onPressed: () {
@@ -99,7 +160,7 @@ class InsightsSection extends StatelessWidget {
                   ),
                   child: const Text('See our Insights'),
                 )
-              : SizedBox(),
+              : const SizedBox(),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class BlogBox extends StatelessWidget {
@@ -7,8 +8,10 @@ class BlogBox extends StatelessWidget {
   final String tag;
   final String description;
   final bool isDesktop;
+  final String urlId;
   const BlogBox(
       {Key? key,
+      required this.urlId,
       required this.image,
       required this.content,
       required this.description,
@@ -21,8 +24,10 @@ class BlogBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/blogs',
-            arguments: {'image': image, 'title': title, 'content': content});
+        Navigator.pushNamed(
+          context,
+          '/blogs/$urlId',
+        );
       },
       child: Ink(
         width:
